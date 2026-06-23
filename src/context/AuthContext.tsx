@@ -14,8 +14,10 @@ interface AuthContextType {
 const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const { data, isLoading, error, logout, refetchUserData, setAuth } =
-    useAuth();
+  const { data, isLoading, error, logout, refetchUserData, setAuth } = useAuth({
+    queryKey: ["auth_key"],
+    url: "auth_url",
+  });
 
   const value = useMemo<AuthContextType>(
     () => ({

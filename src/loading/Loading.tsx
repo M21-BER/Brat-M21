@@ -2,7 +2,7 @@ import useThemeStore from "@/store/theme";
 import { useEffect, useState } from "react";
 import { RingLoader } from "react-spinners";
 
-function RequestLoading() {
+export default function Loading() {
   const [loaderSize, setLoaderSize] = useState(15);
   const { theme } = useThemeStore();
 
@@ -37,5 +37,3 @@ function RequestLoading() {
     </div>
   );
 }
-
-export default RequestLoading;

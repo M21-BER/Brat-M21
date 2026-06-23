@@ -1,7 +1,7 @@
 import { Outlet, createHashRouter } from "react-router-dom";
 import AppWrapper from "@/layout/Wrapper";
 import { RouteErrorFallback } from "@/error/ErrorFallback";
-import allRoutes from "@/pages";
+import allRoutes from ".";
 import { AuthProvider } from "@/context/AuthContext";
 import { LoginRoute } from "./LoginRoute";
 import { ProtectedRoute } from "./ProtectedRoute";

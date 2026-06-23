@@ -4,7 +4,7 @@ import path from "path";
 
 export function autoRoutesPlugin(): Plugin {
   const pagesDir = path.resolve(process.cwd(), "src/pages");
-  const outputFile = path.resolve(pagesDir, "index.tsx");
+  const outputFile = path.resolve(process.cwd(), "src/routes", "index.tsx");
 
   async function scanRouteFiles(): Promise<string[]> {
     const routeFiles: string[] = [];
@@ -25,7 +25,7 @@ export function autoRoutesPlugin(): Plugin {
               const relativePath = path.relative(pagesDir, fullPath);
               const importName = `${relativePath.replace(/[\\/]/g, "_")}_routes`;
               routeFiles.push(
-                `import { ${relativePath.replace(/[\\/]/g, "_")}Routes as ${importName} } from './${relativePath}/route_data';`,
+                `import { ${relativePath.replace(/[\\/]/g, "_")}Routes as ${importName} } from '@/pages/${relativePath}/route_data';`,
               );
             } catch {
               // No route_data.tsx in this directory, continue scanning

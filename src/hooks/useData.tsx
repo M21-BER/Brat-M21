@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@/lib/queryClient";
 import { getData } from "@/services/api";
 
 type UseDataProps = {
@@ -6,6 +6,7 @@ type UseDataProps = {
   url: string;
   retry?: boolean;
   enabled?: boolean;
+  refetchOnWindowFocus?: boolean;
   staleTime?: number;
 };
 

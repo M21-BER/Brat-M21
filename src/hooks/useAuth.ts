@@ -1,34 +1,42 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { getData } from "@/services/api";
+import { useQueryClient } from "@/lib/queryClient";
 import { useNavigate } from "react-router-dom";
 import LocalStorageSaver from "@/utils/local_storage";
 import { TOKEN_KEY } from "@/utils/utils";
-
-export function useAuth() {
+import { useData } from "./useData";
+export function useAuth({
+  queryKey,
+  url,
+  navigateTo = "/login",
+  replaceOnNavigate = true,
+}: {
+  queryKey: string[];
+  url: string;
+  navigateTo?: string;
+  replaceOnNavigate?: boolean;
+}) {
   const queryClient = useQueryClient();
   const tokenData = LocalStorageSaver.getData<{
     token: string;
-    userData: any;
+    userData?: any;
   }>(TOKEN_KEY);
   const token = tokenData?.token || null;
   const shouldFetch = !!token;
   const navigate = useNavigate();
-  const query = useQuery({
-    queryKey: ["student_auth"],
-    queryFn: () => getData<any>({ url: "student/auth" }),
+  const query = useData<any>({
+    queryKey,
+    url,
     retry: false,
     refetchOnWindowFocus: false,
     staleTime: Infinity,
     enabled: shouldFetch,
   });
   const setAuth = (data: any) => {
-    queryClient.setQueryData(["student_auth"], data);
+    queryClient.setQueryData(queryKey, data);
   };
   const logout = async () => {
     LocalStorageSaver.removeData(TOKEN_KEY);
-    LocalStorageSaver.removeData("socketToken");
-    queryClient.removeQueries({ queryKey: ["student_sauth"] });
-    navigate("/login", { replace: true });
+    queryClient.removeQueries({ queryKey });
+    navigate(navigateTo, { replace: replaceOnNavigate });
   };
 
   return {

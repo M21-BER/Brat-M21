@@ -1,6 +1,6 @@
 import Navbar from "@/components/ui/Navbar";
 import { LoadingProvider, useLoading } from "@/context/LoadingContext";
-import RequestLoading from "@/loading/Loading";
+import Loading from "@/loading/Loading";
 import { Outlet } from "react-router-dom";
 
 export default function WrapperLayout() {
@@ -20,7 +20,7 @@ function Body() {
   return (
     <div className="relative">
       <Outlet />
-      {isLoading && <RequestLoading />}
+      {isLoading && <Loading />}
     </div>
   );
 }
