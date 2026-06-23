@@ -9,7 +9,7 @@ import { Toast } from "@/utils/custom_toast";
 import logo from "@/assets/images/logo.png";
 import { signin } from "@/services/auth";
 import { useAuthContext } from "@/context/AuthContext";
-import RequestLoading from "@/loading/RequestLoading";
+import RequestLoading from "@/loading/Loading";
 import LocalStorageSaver from "@/utils/local_storage";
 import { TOKEN_KEY } from "@/utils/utils";
 

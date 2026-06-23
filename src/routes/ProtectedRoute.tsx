@@ -2,7 +2,7 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 import { useAuthContext } from "@/context/AuthContext";
 
-import RequestLoading from "@/loading/RequestLoading";
+import RequestLoading from "@/loading/Loading";
 
 export function ProtectedRoute() {
   const { userData, loading } = useAuthContext();

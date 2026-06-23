@@ -1,5 +1,5 @@
 import { Outlet, createHashRouter } from "react-router-dom";
-import AppWrapper from "@/layout/WrapperLayout";
+import AppWrapper from "@/layout/Wrapper";
 import { RouteErrorFallback } from "@/error/ErrorFallback";
 import allRoutes from "@/pages";
 import { AuthProvider } from "@/context/AuthContext";

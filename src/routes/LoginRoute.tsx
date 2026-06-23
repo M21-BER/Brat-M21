@@ -4,7 +4,7 @@ import Login from "@/pages/login";
 
 import { useAuthContext } from "@/context/AuthContext";
 
-import RequestLoading from "@/loading/RequestLoading";
+import RequestLoading from "@/loading/Loading";
 
 export function LoginRoute() {
   const { userData, loading } = useAuthContext();
